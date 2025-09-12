@@ -270,7 +270,8 @@ List MULTI_single( const List& DataList,
 
   return List::create(
     Named( "mu_beta" )  = mu_beta,
-    Named( "se_beta" )  = sqrt( Sigma2_beta + 1e-5 )  // sqrt( Sigma2_beta + 1e-6 )
+    // Named( "se_beta" )  = sqrt( Sigma2_beta + 1e-5 )  // sqrt( Sigma2_beta + 1e-6 )
+    Named( "se_beta" )  = sqrt( Sigma2_beta )
     // Named( "beta_trace" ) = mu_beta_trace,
     // Named( "ELBO_set" ) = ELBO_set
   );
