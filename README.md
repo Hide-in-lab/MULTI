@@ -4,8 +4,7 @@ Assuming that we have _**K**_ tissues, one of which is designated as the target 
 
 # Data Input
 As shown in Fig. 1 of the paper, MULTI requires three types of input data: \
-1> The estimated IV-to-exposure effect size vector and its corresonding diagonal standard error matrix
-
+1> The estimated IV-to-exposure effect size vector and its corresonding diagonal standard error matrix for the k-th tissue
 $$ \boldsymbol{\hat{\gamma}}_k = (\hat{\gamma}_{k1},\hat{\gamma}_{k2},\cdots,\hat{\gamma}_{kp_k})^{\prime} $$
 $$ \boldsymbol{\hat{S}}_k = \mathrm{diag}(\hat{S}_{\gamma_{k1}},\hat{S}_{\gamma_{k2}},\cdots,\hat{S}_{\gamma_{kp_k}}) $$
 
