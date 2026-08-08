@@ -68,6 +68,7 @@ Generally, users only need to adjust the data input; the remaining parameters in
 # Reference
 Yu Cheng<sup>+</sup>, Shuhan Liu<sup>+</sup>, Xinjia Ruan<sup>+</sup>, Zhonghua Li, Liyun Jiang<sup> #</sup>, Tiantian Liu<sup> #</sup>, Fangrong Yan<sup> #</sup>, **Multi-tissue integrated Mendelian randomization method identifies disease risk genes**, Briefings in Bioinformatics, Volume 27, Issue 4, July 2026, bbag414, https://doi.org/10.1093/bib/bbag414
 
+**Contact e-mail**: yucheng.cpu@foxmail.com
 
 
 </div>
