@@ -8,13 +8,10 @@ As shown in Fig. 1 of the paper, MULTI requires three types of input data: \
 
 $$
 \boldsymbol{\hat{\gamma}}_k =
-(\hat{\gamma}_{k1},\hat{\gamma}_{k2},\cdots,\hat{\gamma}_{kp_k})^{\prime},
-\quad
-\boldsymbol{\hat{S}}_{\gamma_k}
-=
-\mathrm{diag}
-(\hat{S}_{\gamma_{k1}},\hat{S}_{\gamma_{k2}},\cdots,\hat{S}_{\gamma_{kp_k}})
+(\hat{\gamma}_{k1},\hat{\gamma}_{k2},\cdots,\hat{\gamma}_{kp_k})^{\prime}
 $$
+
+
 
 
 ![Image text](https://github.com/Hide-in-lab/MULTI/blob/SupplementaryResults/Figure%201.jpg)
