@@ -12,6 +12,9 @@ $$ \hat{\boldsymbol{\gamma}}_k = (\hat{\gamma}_{k1},\hat{\gamma}_{k2},\cdots,\ha
 
 **2>** The **estimated IV-to-outcome effect size vector** and its **corresonding diagonal standard error matrix** for the k-th tissue
 
+$$ \hat{\boldsymbol{\Gamma}}_k = (\hat{\Gamma}_{k1},\hat{\Gamma}_{k2},\cdots,\hat{\Gamma}_{kp_k})^{\prime},
+\quad
+\hat{\boldsymbol{S}}_{\Gamma_k} = \mathrm{diag}(\hat{S}_{\Gamma_{k1}},\hat{S}_{\Gamma_{k2}},\cdots,\hat{S}_{\Gamma_{kp_k}}) $$
 
 
 ![Image text](https://github.com/Hide-in-lab/MULTI/blob/SupplementaryResults/Figure%201.jpg)
