@@ -97,7 +97,7 @@ Then you will get a data list like this:
   <img src="https://github.com/Hide-in-lab/MULTI/blob/SupplementaryResults/Github/HD.png?raw=true" width="90%" />
 </p>
 
-**Step 3)** 
+**Step 3)** $\color{red}{\textbf{Calculating the causal effect}}$
 
 Finally, users should integrate the SNP information of recommended supportive tissue(s) to the target tissue, and create another `DataList` like **Step 2**. Then call the `MULTI_single()` function to calculate the final gene-outcome causal effect.
 
@@ -129,7 +129,13 @@ Then you will get a data list like this:
 
 
 # Reference
+
+$\color{red}{\textbf{Please kindly cite the following paper if you use the}}$  `MULTI` $\color{red}{\textbf{package:}}$
+
+
 Yu Cheng<sup>+</sup>, Shuhan Liu<sup>+</sup>, Xinjia Ruan<sup>+</sup>, Zhonghua Li, Liyun Jiang<sup> #</sup>, Tiantian Liu<sup> #</sup>, Fangrong Yan<sup> #</sup>, **Multi-tissue integrated Mendelian randomization method identifies disease risk genes**, Briefings in Bioinformatics, Volume 27, Issue 4, July 2026, bbag414, https://doi.org/10.1093/bib/bbag414
+
+$\color{red}{\textbf{To avoid duplicating effort in preparing the data required for calculating linkage disequilibrium (LD) matrices}}$, researchers may request the preprocessed datasets directly from the first author via email.
 
 **Contact e-mail**: yucheng.cpu@foxmail.com
 
