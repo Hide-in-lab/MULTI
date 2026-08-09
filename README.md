@@ -39,7 +39,7 @@ In the manuscript, we provided three reference similarity thresholds (**0.1**, *
 In practical applications, researchers who aim to strictly control false-positive discoveries may choose a lower similarity threshold. Conversely, researchers who prioritize the identification of as many potential causal genes as possible may adopt a higher similarity threshold. Based on the simulation results presented in this study, we recommend using **cutoff = 0.5** as a reference threshold for practical applications. Nevertheless, researchers can adjust the similarity threshold according to their specific research objectives and desired balance between false-positive control and discovery power.
 
 <p align="center">
-  <img src="https://github.com/Hide-in-lab/MULTI/blob/SupplementaryResults/Figure%201.jpg?raw=true" width="50%" />
+  <img src="https://github.com/Hide-in-lab/MULTI/blob/SupplementaryResults/Github/Figure%201.jpg?raw=true" width="50%" />
   <br>
   <b>Fig.1 Workflow of MULTI</b>
 </p>
@@ -53,17 +53,80 @@ install_github( 'Hide-in-lab/MULTI@main', force  = T )
 ```
 
 # Usage
-When using the MULTI package, users should 
+**Step 1)** $\color{red}{\textbf{Preparing Input Data}}$
 
-**1)** first call the `MULTI()` function to calculate the tissue-specific effects. This function identifies which supportive tissues are similar to the target tissue, guiding users on which tissues to integrate;
+Users should prepare the `bx`, `bxse`, `by`, `byse`, and the estimated LD matrix `R_hat` for each tissue. Users must $\color{red}{\textbf{strictly format these variables}}$ as the example code to ensure the `MULTI` package runs correctly.
+
 ```
-MULTI( DataList, tissue_ref = "Tissue1", r2 = 0.01, cut_off = 0.5, iter_times = 500, ELBO_tol = 1e-6 )
+##### Example Code #####
+mydata <- list( )
+for( i in 1:length( Tissues_TBD ) ){
+
+  mydata[[ i ]] <- list( bx   = as.matrix( Tissue_int$bx ),
+                         bxse = as.matrix( Tissue_int$bxse ),
+                         by   = as.matrix( Tissue_int$by ),
+                         byse = as.matrix( Tissue_int$byse ),
+                         R_hat = R_hat_int )
+
+}
+names( mydata ) <- paste0( 'Tissue', 1:length( mydata ) )
 ```
-**2)** then call the `MULTI_single()` function to calculate the final gene-outcome causal effect. Note that, unlike the `MULTI()` function, the input for `MULTI_single()` is the newly integrated IV pool.
+Then you will get a data list like this:
+<p align="center">
+  <img src="https://github.com/Hide-in-lab/MULTI/blob/SupplementaryResults/Github/DataInput.png?raw=true" width="50%" />
+</p>
+
+**Step 2)** $\color{red}{\textbf{Calculating the tissue similarity}}$
+
+Call the `MULTI()` function to calculate the tissue similarity matrix.
 ```
-MULTI_single( DataList, double r2 = 0.01, iter_times = 500, ELBO_tol = 1e-6 )
+library( MULTI )
+res <- MULTI( DataList = mydata, tissue_ref = "Tissue1", r2 = 0.01, cut_off = 0.5, iter_times = 500, ELBO_tol = 1e-6 )
+res
+
+##### Parameters Explanation #####
+### DataList: Data input
+### tissue_ref: To specify the target tissue. Default is `Tissue 1`.
+### r2: To simplify the LD matrix. If the LD value between SNPs is below this specified threshold, it is forced to 0. Default is 0.01.
+### cut_off: To specify the similarity cutoff. If the Hellinger distance between the supportive tissue and the target tissue, this supportive tissue will be regarded as the similar tissue to be integrated. Default is 0.5.
+### iter_times: To specify the iteration times. MULTI utilizes the VEM algorithm and typically converges within a few dozen iterations. Default is 500.
+### ELBO_tol: To specify the convergence tolerance of the model. Generally, a smaller value yields more accurate results; however, setting it too small may result in excessively long computation times. Default is 1e-6.
 ```
-Generally, users only need to adjust the data input; the remaining parameters in the function can be left at their default values.
+Then you will get a data list like this:
+<p align="center">
+  <img src="https://github.com/Hide-in-lab/MULTI/blob/SupplementaryResults/Github/HD.png?raw=true" width="90%" />
+</p>
+
+**Step 3)** 
+
+Finally, users should integrate the SNP information of recommended supportive tissue(s) to the target tissue, and create another `DataList` like **Step 2**. Then call the `MULTI_single()` function to calculate the final gene-outcome causal effect.
+
+Note that, users should $\color{red}{\textbf{re-estimate the LD matrix using the integrated IV pool}}$.
+```
+##### Example Code #####
+Tissue_int <- data.frame(
+  rs   = unlist( rs[ c( 1, 3, 10, 11 ) ] ),
+  bx   = lapply( mydata[ c( 1, 3, 10, 11 ) ], function( x ) x$bx )   %>% unlist( ),
+  bxse = lapply( mydata[ c( 1, 3, 10, 11 ) ], function( x ) x$bxse ) %>% unlist( ),
+  by   = lapply( mydata[ c( 1, 3, 10, 11 ) ], function( x ) x$by )   %>% unlist( ),
+  byse = lapply( mydata[ c( 1, 3, 10, 11 ) ], function( x ) x$byse ) %>% unlist( )
+)
+mydata_int <- list( bx   = as.matrix( Tissue_int$bx ),
+                    bxse = as.matrix( Tissue_int$bxse ),
+                    by   = as.matrix( Tissue_int$by ),
+                    byse = as.matrix( Tissue_int$byse ),
+                    R_hat = R_hat_int )  ## R_hat_int: re-estimated LD matrix
+res_int <- MULTI_single( mydata_int, r2 = 0.01, ter_times = 500, ELBO_tol = 1e-6 )
+p_value <- ifelse( res_int$mu_beta > 0,
+        pnorm( 0, res_int$mu_beta, res_int$se_beta, lower.tail = T ),
+        pnorm( 0, res_int$mu_beta, res_int$se_beta, lower.tail = F ) )
+p_value
+```
+Then you will get a data list like this:
+<p align="center">
+  <img src="https://github.com/Hide-in-lab/MULTI/blob/SupplementaryResults/Github/Final.png?raw=true" width="30%" />
+</p>
+
 
 # Reference
 Yu Cheng<sup>+</sup>, Shuhan Liu<sup>+</sup>, Xinjia Ruan<sup>+</sup>, Zhonghua Li, Liyun Jiang<sup> #</sup>, Tiantian Liu<sup> #</sup>, Fangrong Yan<sup> #</sup>, **Multi-tissue integrated Mendelian randomization method identifies disease risk genes**, Briefings in Bioinformatics, Volume 27, Issue 4, July 2026, bbag414, https://doi.org/10.1093/bib/bbag414
