@@ -5,6 +5,12 @@
 **MULTI** (**M**ulti-tissue **U**nified **L**ikelihood-based **T**ranscriptomic **I**ntegration) is a multi-tissue Mendelian randomization method designed to identify tissue-specific causal genes underlying complex traits.
 Assuming that we have _**K**_ tissues, one of which is designated as the target tissue (_**T**_**<sub>1</sub>**) and the remaining tissues are considered supportive tissues (_**T<sub>k</sub>**_, k = 2, 3, ..., K), MULTI leverages information from supportive tissues to enhance the estimation of causal effects between gene expression level and disease in the target tissue, thereby reducing type I error rates and improving statistical power.
 
+<p align="center">
+  <img src="https://github.com/Hide-in-lab/MULTI/blob/SupplementaryResults/Github/Figure%201.jpg?raw=true" width="50%" />
+  <br>
+  <b>Fig.1 Workflow of MULTI</b>
+</p>
+
 # Data Input
 Assuming the k-th (_k_ = 1, 2, ..., _K_) tissue has _**p<sub>k</sub>**_ eligible IVs (typically cis-eQTL). And as shown in **Fig. 1A** of the paper, MULTI requires three types of input data for each tissue:
 
@@ -38,11 +44,6 @@ In the manuscript, we provided three reference similarity thresholds (**0.1**, *
 
 In practical applications, researchers who aim to strictly control false-positive discoveries may choose a lower similarity threshold. Conversely, researchers who prioritize the identification of as many potential causal genes as possible may adopt a higher similarity threshold. Based on the simulation results presented in this study, we recommend using **cutoff = 0.5** as a reference threshold for practical applications. Nevertheless, researchers can adjust the similarity threshold according to their specific research objectives and desired balance between false-positive control and discovery power.
 
-<p align="center">
-  <img src="https://github.com/Hide-in-lab/MULTI/blob/SupplementaryResults/Github/Figure%201.jpg?raw=true" width="50%" />
-  <br>
-  <b>Fig.1 Workflow of MULTI</b>
-</p>
 
 # Installation
 Install this tool by use of the 'devtools' package. Note that MULTI partly depends on the C++ languange, thus you should appropriately set Rtools and X code for Windows, Mac OS/X, and Linux, respectively.
