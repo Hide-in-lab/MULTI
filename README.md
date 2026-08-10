@@ -133,8 +133,11 @@ Then you will get a data list like this:
 
 $\color{red}{\textbf{Please kindly cite the following paper if you use the}}$  `MULTI` $\color{red}{\textbf{package:}}$
 
-
 Yu Cheng<sup>+</sup>, Shuhan Liu<sup>+</sup>, Xinjia Ruan<sup>+</sup>, Zhonghua Li, Liyun Jiang<sup> #</sup>, Tiantian Liu<sup> #</sup>, Fangrong Yan<sup> #</sup>, **Multi-tissue integrated Mendelian randomization method identifies disease risk genes**, Briefings in Bioinformatics, Volume 27, Issue 4, July 2026, bbag414, https://doi.org/10.1093/bib/bbag414
+
+# Development
+
+This package is developed and maintained by **Yu Cheng**. 
 
 $\color{red}{\textbf{To avoid duplicating effort in preparing the data required for calculating linkage disequilibrium (LD) matrices}}$, researchers may request the preprocessed datasets directly from the first author via email.
 
