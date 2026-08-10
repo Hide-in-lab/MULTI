@@ -87,8 +87,8 @@ res
 ##### Parameters Explanation #####
 ### DataList: Data input
 ### tissue_ref: To specify the target tissue. Default is `Tissue 1`.
-### r2: To simplify the LD matrix. If the LD value between SNPs is below this specified threshold, it is forced to 0. Default is 0.01.
-### cut_off: To specify the similarity cutoff. If the Hellinger distance between the supportive tissue and the target tissue, this supportive tissue will be regarded as the similar tissue to be integrated. Default is 0.5.
+### r2: To simplify the LD matrix. If the LD value between SNPs is below this specified threshold, it is forced to 0. r2 ranges from 0 to 1, and default is 0.01.
+### cut_off: To specify the similarity cutoff. If the Hellinger distance between the supportive tissue and the target tissue, this supportive tissue will be regarded as the similar tissue to be integrated. cut_off ranges from 0 to 1, and default is 0.5.
 ### iter_times: To specify the iteration times. MULTI utilizes the VEM algorithm and typically converges within a few dozen iterations. Default is 500.
 ### ELBO_tol: To specify the convergence tolerance of the model. Generally, a smaller value yields more accurate results; however, setting it too small may result in excessively long computation times. Default is 1e-6.
 ```
