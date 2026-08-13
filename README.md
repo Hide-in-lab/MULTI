@@ -8,7 +8,7 @@ Assuming that we have _**K**_ tissues, one of which is designated as the target 
 <p align="center">
   <img src="https://github.com/Hide-in-lab/MULTI/blob/SupplementaryResults/Github/Figure%201.jpg?raw=true" width="50%" />
   <br>
-  <b>Fig.1 Graphis abstract of MULTI</b>
+  <b>Fig.1 Graphic abstract of MULTI</b>
 </p>
 
 # Data Input
