@@ -14,7 +14,7 @@ Assuming that we have _**K**_ tissues, one of which is designated as the target 
 # Data Input
 Assuming the k-th (_k_ = 1, 2, ..., _K_) tissue has _**p<sub>k</sub>**_ eligible IVs (typically cis-eQTL). And as shown in **Fig. 1A** of the paper, MULTI requires three types of input data for each tissue:
 
-**1)** _**Estimated IV-to-exposure effect size vector**_ $`\hat{\boldsymbol{\gamma}}_k`$ and its _**corresponding diagonal standard error matrix**_ $`\hat{\mathbf{S}}_{\Gamma_k}`$ (_e.g._, GTEx Portal), where
+**1)** _**Estimated IV-to-exposure effect size vector**_ $`\hat{\boldsymbol{\gamma}}_k`$ and its _**corresponding diagonal standard error matrix**_ $`\hat{\mathbf{S}}_{\gamma_k}`$ (_e.g._, GTEx Portal), where
 
 $$ \hat{\boldsymbol{\gamma}}_k = (\hat{\gamma}_{k1},\hat{\gamma}_{k2},\cdots,\hat{\gamma}_{kp_k})^{\prime},
 \quad
